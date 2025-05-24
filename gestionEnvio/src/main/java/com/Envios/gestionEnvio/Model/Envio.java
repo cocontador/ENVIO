@@ -26,4 +26,6 @@ public class Envio {
     private String descripcion;
     @Column (name = "fecha_envio")
     private LocalDateTime fechaEnvio = LocalDateTime.now();
+    @Column(name = "codigo_seguimiento", nullable = false, unique = true)
+    private String codigoSeguimiento;
 }

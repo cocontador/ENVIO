@@ -32,16 +32,17 @@ public class EnvioServiceImp implements EnvioService {
 
     @Override
     public Envio actualizarEnvio(Long id, Envio envioActualizado) {
-        Optional <Envio> envioExistente = envioRepository.findById(id);
+    Optional<Envio> envioExistente = envioRepository.findById(id);
         if (envioExistente.isPresent()) {
-            Envio envio = envioExistente.get();
-            envio.setCliente(envioActualizado.getCliente());
-            envio.setDireccion(envioActualizado.getDireccion());
-            envio.setDescripcion(envioActualizado.getDescripcion());
-            envio.setFechaEnvio(envioActualizado.getFechaEnvio());
-            return envioRepository.save(envio);
-        } else {
-            return null;
+        Envio envio = envioExistente.get();
+        envio.setCliente(envioActualizado.getCliente());
+        envio.setDireccion(envioActualizado.getDireccion());
+        envio.setDescripcion(envioActualizado.getDescripcion());
+        envio.setFechaEnvio(envioActualizado.getFechaEnvio());
+        envio.setCodigoSeguimiento(envioActualizado.getCodigoSeguimiento());
+        return envioRepository.save(envio);
+    } else {
+        return null;
         }
     }
 
